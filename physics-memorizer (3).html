@@ -1,0 +1,276 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>منصة حفظ تعريفات الفيزياء</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#edf3f8;--c:#fff;--c2:#f1f5f9;--t:#16283b;--m:#5d7185;--b:#d6e1ea;--ok:#15803d;--no:#dc2626;--w:#d97706;--okbg:#dcfce7;--nobg:#fee2e2;--tagbg:#e6f4f6;--or:#e8871a;--p:#e11d48;--h1:#a3123a;--h2:#ff6b81;--a:#e11d48;--ff:system-ui,Tahoma,sans-serif;--sh:0 6px 18px rgba(20,40,70,.1)}
+[data-th=dark]{--bg:#0a1424;--c:#111f36;--c2:#172a47;--t:#e8f0fb;--m:#8ea5c4;--b:#223858;--ok:#34d399;--no:#fb7185;--okbg:#06382a;--nobg:#42101c;--tagbg:#0e2a4d;--sh:none}
+*{box-sizing:border-box}html{font-size:14px}
+body{margin:0;background:var(--bg);color:var(--t);font-family:var(--ff);line-height:1.8;font-size:1rem;min-height:100vh}
+header{background:linear-gradient(135deg,var(--h1),var(--h2));color:#fff;padding:14px 16px 12px;border-radius:0 0 22px 22px}
+header h1{margin:0;font-size:1.5rem}header small{opacity:.9}
+.top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.xpb{background:rgba(255,255,255,.22);border-radius:20px;padding:2px 14px;font-weight:700}
+.hb{background:#eef3f8;color:#16283b;border:0;border-radius:22px;padding:7px 14px;font:inherit;cursor:pointer;margin:8px 0 0 8px;box-shadow:var(--sh)}
+.hbar{height:12px;background:rgba(255,255,255,.3);border-radius:9px;margin-top:10px;overflow:hidden}.hbar i{display:block;height:100%;background:#fff;opacity:.85;transition:width .6s}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:12px 14px 4px}
+.tabs button{flex:none;border:1px solid var(--b);background:var(--c);color:var(--t);border-radius:24px;padding:8px 18px;font:inherit;cursor:pointer}
+.tabs button.on{background:var(--p);color:#fff;border-color:var(--p);box-shadow:0 6px 14px rgba(0,0,0,.2)}
+main{max-width:760px;margin:auto;padding:14px}
+.card{background:var(--c);border:1px solid var(--b);border-radius:20px;padding:16px;margin-bottom:12px;box-shadow:var(--sh)}
+.hero{background:linear-gradient(135deg,var(--h1),var(--h2) 80%,var(--or));color:#fff;border-radius:26px;padding:22px;margin-bottom:12px}.hero h2{font-size:1.7rem;margin:0 0 6px;color:#fff}
+h2{margin:0 0 8px;font-size:1.2rem;color:var(--a)}h3{margin:8px 0 4px}
+.btn{background:var(--p);color:#fff;border:0;border-radius:14px;padding:9px 16px;font:inherit;cursor:pointer;margin:3px;transition:.15s}.btn:hover{filter:brightness(1.1)}.btn:active{transform:scale(.96)}.btn:disabled{opacity:.4}
+.btn.g{background:var(--c2);color:var(--t);border:1px solid var(--b)}.btn.ok{background:var(--ok)}.btn.no{background:var(--no)}.btn.w{background:var(--w)}.btn.or{background:var(--or)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.stat{background:var(--c);border:1px solid var(--b);border-radius:18px;padding:10px;text-align:center;box-shadow:var(--sh)}.stat b{font-size:1.6rem;color:var(--a);display:block}
+.bar{height:10px;background:var(--b);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--p);transition:width .6s}
+.flip{perspective:900px;min-height:230px;cursor:pointer}.fin{position:relative;min-height:230px;transition:transform .6s;transform-style:preserve-3d}.flip.f .fin{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;background:var(--c);border:2px solid var(--p);border-radius:20px;padding:18px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:auto}.face.bk{transform:rotateY(180deg)}
+input,textarea,select{width:100%;font:inherit;padding:9px;border-radius:12px;border:1px solid var(--b);background:var(--c);color:var(--t);margin:3px 0}input[type=range]{accent-color:var(--or);padding:0}
+.opt{display:block;width:100%;text-align:right;margin:6px 0;padding:10px;border-radius:14px;border:2px solid var(--b);background:var(--c);color:var(--t);font:inherit;cursor:pointer}.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.no{border-color:var(--no);background:var(--nobg)}
+.chip{display:inline-block;background:var(--c2);border:1px solid var(--b);border-radius:20px;padding:2px 12px;margin:3px;cursor:pointer}.chip.s{background:var(--p);color:#fff}
+.tag{background:var(--tagbg);color:var(--a);border-radius:8px;padding:0 8px;font-size:.85rem}.fm{direction:ltr;text-align:center;color:var(--a);font-weight:700}
+.blank{display:inline-block;width:80px;margin:0 3px;padding:0 4px;text-align:center}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:20;display:flex;align-items:flex-end}
+.sheet{background:var(--c);width:100%;max-width:760px;margin:auto;max-height:88vh;overflow:auto;border-radius:28px 28px 0 0;padding:18px}
+.pill{background:var(--c2);color:var(--t);border:1px solid var(--b);border-radius:24px;padding:9px 20px;margin:4px;font:inherit;cursor:pointer}.pill.on{background:var(--p);color:#fff;border-color:var(--p)}
+.dot{display:inline-block;width:14px;height:14px;border-radius:50%;margin-inline-start:6px;vertical-align:middle}
+.sticky{position:sticky;bottom:-18px;background:var(--c);padding:10px 0;display:flex;gap:8px;justify-content:space-between}
+[data-den=c] .card{padding:10px}[data-den=c] main{padding:8px}[data-den=c] h2{font-size:1.05rem}
+[data-mo="0"] *{transition:none!important;animation:none!important}
+</style></head><body><div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<script type="text/babel">
+const {useState,useEffect,useRef,useMemo,useContext}=React;
+const KEY='phys-memo-v1';
+const mk=(id,ch,title,def,kw,lvl,rel,fm)=>({id,ch,title,def,kw,lvl,rel,fm});
+const SEED=[
+mk('d1','اللزوجة','خاصية اللزوجة','الخاصية التي تسبب وجود مقاومة أو احتكاك بين طبقات السائل بحيث تعوق انزلاق بعضها فوق بعض.',['مقاومة','احتكاك','طبقات','انزلاق'],1,['d2','d3','d4']),
+mk('d2','اللزوجة','قوى التماسك','قوى التجاذب بين جزيئات نفس المادة، مثل قوى التماسك بين جزيئات العسل.',['جزيئات','نفس','التماسك'],1,['d3']),
+mk('d3','اللزوجة','قوى التلاصق','قوى التجاذب بين جزيئات مادة وجزيئات مادة أخرى، مثل قوى التلاصق بين جزيئات قطرة الماء والزجاج.',['مادة','أخرى','التلاصق'],1,['d2']),
+mk('d4','اللزوجة','معامل اللزوجة','يعادل القوة المماسية المؤثرة على وحدة المساحات من سائل والتي تسبب فرقاً في السرعة مقداره الوحدة بين طبقتين من السائل المسافة العمودية بينهما الوحدة.',['القوة المماسية','وحدة المساحات','السرعة','المسافة العمودية'],3,['d1'],'η = F d / (A v) ، الوحدة: N.s/m² = kg/m.s = J.s/m³'),
+mk('d5','السريان','السريان الطبقي','عندما يتحرك سائل ما بحيث تنزلق طبقاته المتجاورة في نعومة ويسر يقال أن هذا السائل يسري سرياناً انسيابياً وهو ما يطلق عليه السريان الطبقي، حيث تتخذ كل كمية صغيرة من السائل مساراً متصلاً وهي يطلق عليه خط الانسياب.',['طبقاته','نعومة','مساراً متصلاً','خط الانسياب'],2,['d6','d7']),
+mk('d6','السريان','السريان الهادئ','قد يكون السريان الطبقي هادئاً عندما تكون سرعة السائل عند كل نقطة في مساره ثابتة بمرور الزمن.',['سرعة','كل نقطة','ثابتة','بمرور الزمن'],2,['d5']),
+mk('d7','السريان','السريان المضطرب','السوائل: إذا زادت سرعة انسياب السائل عن حد معين وفي تلك الحالة يتميز السريان بوجود دوامات دائرية صغيرة. الغازات: إذا انتشر غاز من حيز صغير إلى حيز كبير أو من ضغط مرتفع إلى ضغط منخفض وفي تلك الحالة يتحرك الغاز حركة دوامية.',['حد معين','دوامات','ضغط مرتفع','ضغط منخفض'],3,['d5']),
+mk('d8','السريان','كثافة خطوط الانسياب عند نقطة','عدد خطوط الانسياب التي تمر عمودياً على وحدة المساحات المحيطة بتلك النقطة.',['عدد','خطوط الانسياب','عمودياً','وحدة المساحات'],2,['d5']),
+mk('d9','الكثافة','الكثافة','كتلة وحدة الحجوم من المادة.',['كتلة','وحدة الحجوم'],1,['d10'],'ρ = m / Vol ، الوحدة: kg/m³ ، الأبعاد: ML⁻³T⁰'),
+mk('d10','الكثافة','الكثافة النسبية لمادة','نسبة كثافة المادة إلى كثافة الماء عند 4°C أو نسبة كتلة حجم معين من المادة إلى كتلة نفس الحجم من الماء عند 4°C.',['نسبة','كثافة الماء','4°C'],2,['d9']),
+mk('d11','الموائع','المائع','أي مادة قابلة للانسياب ولا تتخذ شكلاً ثابتاً بل تتخذ شكل الإناء الحاوي لها.',['قابلة للانسياب','شكلاً ثابتاً','الإناء'],1,[])
+];
+const UI0={fs:14,font:'dev',col:'rose',th:'light',den:'n',mo:true,snd:true};
+const COLS={rose:['وردي','#e11d48','#a3123a','#ff6b81'],teal:['تركواز','#0e7c86','#075a64','#22b5c2'],blue:['أزرق','#2563eb','#1e3a8a','#60a5fa'],purple:['بنفسجي','#7c3aed','#4c1d95','#a78bfa'],green:['أخضر','#15803d','#14532d','#4ade80']};
+const FONTS={dev:'system-ui,Tahoma,sans-serif',cairo:'Cairo,sans-serif',taj:'Tajawal,sans-serif',nas:"'Noto Naskh Arabic',serif"};
+const beep=ok=>{try{const C=new(window.AudioContext||window.webkitAudioContext)();const o=C.createOscillator(),g=C.createGain();o.connect(g);g.connect(C.destination);o.frequency.value=ok?740:220;g.gain.value=.08;o.start();o.stop(C.currentTime+.15)}catch(e){}};
+const DEF={ui:UI0,defs:SEED,sr:{},xp:0,days:[],secs:0,log:[],tts:true,perDay:10};
+const load=()=>{try{const s=JSON.parse(localStorage.getItem(KEY));return s?{...DEF,...s}:DEF}catch(e){return DEF}};
+const day=()=>new Date().toISOString().slice(0,10);
+const shuf=a=>[...a].sort(()=>Math.random()-.5);
+const norm=s=>s.replace(/[\u064B-\u0652]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/[.,،:؛]/g,'').trim();
+const st=(c)=>!c||!c.n?'جديد':(c.lapses>=2&&c.reps<2)?'يحتاج تعزيزاً':c.int>=21?'متقن':c.reps<2?'قيد التعلم':'قيد المراجعة';
+function sm2(c,r){c=c||{ef:2.5,reps:0,int:0,lapses:0,n:0};const q=[0,3,4,5][r];let {ef,reps,int,lapses}=c;
+  if(q<3){reps=0;int=0;lapses++}else{reps++;int=reps===1?1:reps===2?3:Math.round(int*ef)}
+  ef=Math.max(1.3,ef+.1-(5-q)*(.08+(5-q)*.02));
+  return {ef,reps,int,lapses,n:c.n+1,due:q<3?Date.now()+6e4:Date.now()+int*864e5}}
+const say=(t,silent)=>{window.dispatchEvent(new CustomEvent('cap',{detail:t}));if(silent||window.TTS===false)return;try{const u=new SpeechSynthesisUtterance(t);u.lang='ar-EG';speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}};
+const Cx=React.createContext(null);
+const rnd=a=>a[Math.floor(Math.random()*a.length)];
+const PR=['عاش يا بطل! قلتها صح','تمام يا معلم، حافظها كويس','جامد جداً! كمّل كده','برافو عليك، دي مظبوطة'];
+const TR=['قربت يا بطل، بس لسه ناقصك كلمتين. جرّب تاني','معلش، ركّز شوية وقولها تاني','لسه مش مظبوطة، راجعها وارجع قولها'];
+const MIS=[['rev','راجع 5 تعريفات',5],['ok','جاوب 3 تمارين صح',3],['rec','سمّع تعريفين بنسبة 80% فأكتر',2]];
+
+function Recorder({d}){
+  const {xp,bump}=useContext(Cx);
+  const [on,setOn]=useState(false),[txt,setTxt]=useState(''),[r,setR]=useState(null),[msg,setMsg]=useState('');
+  const rec=useRef(null),fin=useRef(''),tr=useRef(''),live=useRef(false),lang=useRef('ar-EG');
+  const hint=location.protocol!=='https:'?' (الصفحة مفتوحة بـ '+location.protocol+' — الأفضل ترفعها على GitHub Pages بـ https)':'';
+  const ERR={'not-allowed':'الميكروفون مقفول للموقع ده. اضغط على 🔒 جنب العنوان ← الأذونات ← الميكروفون ← سماح، وحدّث الصفحة.','service-not-allowed':'المتصفح منع خدمة التعرف على الصوت. افتح الصفحة في Chrome مباشرة (مش من جوه تطبيق تاني).','audio-capture':'مفيش ميكروفون شغال في الجهاز.','network':'التعرف على الصوت محتاج إنترنت.'};
+  const judge=t=>{if(!t.trim()){setR({none:1});say('مسمعتش حاجة، قرّب الميكروفون وقول تاني');return}
+    const tw=new Set(norm(t).split(/\s+/).filter(Boolean));const ws=d.def.split(' ');const hits=ws.map(w=>tw.has(norm(w)));const sc=Math.round(hits.filter(Boolean).length/ws.length*100);
+    setR({hits,ws,sc});const ok=sc>=80;xp(ok?10+Math.round(sc/10):2,ok);if(ok)bump('rec');say((ok?rnd(PR):rnd(TR))+'. نسبتك '+sc+' في المية')};
+  const begin=()=>{const SR=window.SpeechRecognition||window.webkitSpeechRecognition;const x=new SR();x.lang=lang.current;x.interimResults=true;x.continuous=false;x.maxAlternatives=1;
+    x.onresult=e=>{let f=fin.current,t2='';for(let k=e.resultIndex;k<e.results.length;k++){const t=e.results[k][0].transcript;if(e.results[k].isFinal)f+=t+' ';else t2+=t}fin.current=f;tr.current=(f+t2).trim();setTxt(tr.current)};
+    x.onerror=e=>{if(e.error==='language-not-supported'&&lang.current==='ar-EG'){lang.current='ar-SA';return}
+      if(e.error==='no-speech'||e.error==='aborted')return;live.current=false;setOn(false);setMsg((ERR[e.error]||'حصل خطأ ('+e.error+')')+hint)};
+    x.onend=()=>{if(live.current){try{x.start()}catch(err){}}else setOn(false)};
+    rec.current=x;try{x.start()}catch(err){setMsg('مقدرتش أبدأ التسجيل: '+err.message)}};
+  const start=async()=>{setMsg('');const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+    if(!SR)return setMsg('المتصفح ده مبيدعمش التعرف على الصوت. افتح الصفحة في Chrome (مش من جوه فيسبوك أو واتساب).'+hint);
+    try{const st=await navigator.mediaDevices.getUserMedia({audio:true});st.getTracks().forEach(t=>t.stop())}
+    catch(e){return setMsg((e&&e.name==='NotAllowedError'?ERR['not-allowed']:'مقدرتش أوصل للميكروفون ('+(e&&e.name||'غير معروف')+').')+hint)}
+    try{speechSynthesis.cancel()}catch(e){}
+    fin.current='';tr.current='';setTxt('');setR(null);live.current=true;setOn(true);begin();say('اقرا التعريف وأنا سامعك…',true)};
+  const stop=()=>{live.current=false;try{rec.current&&rec.current.stop()}catch(e){}setOn(false);setTimeout(()=>judge(tr.current),600)};
+  return <div style={{marginTop:6}}>{!on?<button className="btn or" onClick={start}>🎙️ سجّل قراءتك</button>:<button className="btn no" onClick={stop}>⏹ وقف وقيّم</button>}
+    {msg&&<p className="card" style={{borderColor:'var(--no)',color:'var(--no)'}}>⚠ {msg}</p>}
+    {(on||txt)&&<div className="card" style={{background:'var(--c2)'}}><small>{on?'🔴 بسجّل… اللي بتقوله دلوقتي:':'اللي قلته:'}</small><p>{txt||'…بسمعك'}</p></div>}
+    {r&&(r.none?<p style={{color:'var(--no)'}}>❌ مسمعتش صوت.</p>:<div className="card"><b style={{color:r.sc>=80?'var(--ok)':'var(--no)'}}>{r.sc>=80?'✅ قراءة صح':'❌ قراءة فيها أخطاء'} — {r.sc}%</b>
+      <div className="bar"><i style={{width:r.sc+'%'}}/></div><p>{r.ws.map((w,i)=><span key={i} style={{color:r.hits[i]?'var(--ok)':'var(--no)',fontWeight:r.hits[i]?400:700}}>{w} </span>)}</p><small>الأخضر: اتقال صح • الأحمر: ناقص أو غلط</small></div>)}</div>;
+}
+function Rapid({S}){
+  const {xp,bump,up}=useContext(Cx);
+  const [t,setT]=useState(60),[run,setRun]=useState(false),[sc,setSc]=useState(0),[q,setQ]=useState(null),[fb,setFb]=useState(null),[end,setEnd]=useState(false);
+  const gen=()=>{const d=shuf(S.defs)[0];setQ({d,o:shuf([d,...shuf(S.defs.filter(x=>x.id!==d.id)).slice(0,3)])});setFb(null)};
+  useEffect(()=>{if(!run)return;const i=setInterval(()=>setT(v=>v-1),1000);return()=>clearInterval(i)},[run]);
+  useEffect(()=>{if(run&&t<=0){setRun(false);setEnd(true);xp(sc*2,sc>0);up({best60:Math.max(S.best60||0,sc)});say('خلص الوقت! جاوبت '+sc+' صح')}},[t]);
+  if(S.defs.length<4)return <p className="card">محتاج 4 تعريفات على الأقل للتحدي.</p>;
+  if(!run)return <div className="card"><h2>⏱ تحدي 60 ثانية</h2><p>جاوب على أكبر عدد من الأسئلة. كل إجابة صح = نقطتين XP.</p>{S.best60>0&&<p>رقمك القياسي: <b>{S.best60}</b></p>}{end&&<p className="tag">آخر نتيجة: {sc} صح (+{sc*2} XP)</p>}
+    <button className="btn" onClick={()=>{setT(60);setSc(0);setEnd(false);gen();setRun(true)}}>ابدأ التحدي</button></div>;
+  return <div className="card"><b>⏱ {t} ث • ✅ {sc}</b><div className="bar"><i style={{width:t/60*100+'%'}}/></div><p>أي مصطلح ده تعريفه؟</p><p>{q.d.def}</p>
+    {q.o.map(o=><button key={o.id} className={'opt'+(fb?(o.id===q.d.id?' ok':o.id===fb?' no':''):'')} onClick={()=>{if(fb)return;setFb(o.id);if(o.id===q.d.id){setSc(sc+1);bump('ok')}setTimeout(gen,600)}}>{o.title}</button>)}</div>;
+}
+function Flash({d,onRate,tts}){
+  const [f,setF]=useState(false);const [hide,setHide]=useState(false);const [k,setK]=useState(0);
+  useEffect(()=>{setF(false);setK(0)},[d.id]);
+  const words=d.def.split(' ');
+  return <div><div className={'flip'+(f?' f':'')} onClick={()=>setF(!f)} tabIndex="0" onKeyDown={e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();setF(!f)}}}><div className="fin">
+    <div className="face"><span className="tag">{d.ch}</span><h2>{d.title}</h2><p style={{color:'var(--m)'}}>اذكر التعريف من ذاكرتك ثم اقلب البطاقة</p></div>
+    <div className="face bk"><p style={{fontSize:'1.05rem'}}>{words.slice(0,hide?k:words.length).join(' ')}{hide&&k<words.length?' …':''}</p>{d.fm&&<div className="fm">{d.fm}</div>}<div>{d.kw.map(x=><span key={x} className="tag" style={{margin:2}}>{x}</span>)}</div></div></div></div>
+    <div><button className="btn g" onClick={()=>setF(!f)}>{f?'إخفاء':'إظهار'} الإجابة</button>
+    <button className="btn g" onClick={()=>{setHide(true);setF(true);setK(k+3)}}>كشف تدريجي</button>
+    {tts&&<button className="btn g" onClick={()=>say(d.title+'. '+d.def)}>🔊 قراءة</button>}</div><Recorder d={d}/>
+    {f&&<div><b>كيف كان تذكرك؟</b><br/>{['نسيته تماماً','صعب','تذكرته بجهد','سهل'].map((l,i)=><button key={i} className={'btn '+['no','w','','ok'][i]} onClick={()=>{onRate(i)}}>{l}</button>)}</div>}</div>;
+}
+
+function Study({S,up,xp}){
+  const {bump}=useContext(Cx);
+  const now=Date.now();
+  const q=S.defs.filter(d=>(S.sr[d.id]?.due||0)<=now).sort((a,b)=>((S.sr[a.id]?.due||0)-(S.sr[b.id]?.due||0))||((S.sr[b.id]?.lapses||0)-(S.sr[a.id]?.lapses||0)));
+  const d=q[0];
+  if(!d)return <div className="card"><h2>🎉 أنهيت المستحق اليوم</h2><p>لا توجد تعريفات مستحقة الآن. جرّب التمارين أو عد لاحقاً.</p></div>;
+  return <div><p>المتبقي في طابور المراجعة: <b>{q.length}</b> • الحالة: <span className="tag">{st(S.sr[d.id])}</span></p>
+    <Flash d={d} tts={S.tts} onRate={r=>{up({sr:{...S.sr,[d.id]:sm2(S.sr[d.id],r)}});xp(r>0?5+r*5:0,r>0);bump('rev')}}/></div>;
+}
+
+function Practice({S,up,xp}){
+  const {bump}=useContext(Cx);
+  const [mode,setMode]=useState(null);
+  const [d,setD]=useState(null);const [n,setN]=useState(0);
+  const pick=()=>{const w=S.defs.filter(x=>x.def.split(' ').length>3);const arr=shuf(w).sort((a,b)=>(S.sr[b.id]?.lapses||0)-(S.sr[a.id]?.lapses||0)+(Math.random()-.5)*2);return arr[0]||S.defs[0]};
+  useEffect(()=>{if(mode)setD(pick())},[mode,n]);
+  const next=ok=>{const r=ok?2:0;up({sr:{...S.sr,[d.id]:sm2(S.sr[d.id],r)}});xp(ok?15:0,ok);if(ok)bump('ok')};
+  if(!mode)return <div className="card"><h2>التمارين</h2>{[['cloze','أكمل التعريف'],['order','أعد ترتيب التعريف'],['mcq','اختيار من متعدد'],['write','اكتب التعريف'],['rec','🎙️ سمّع التعريف'],['rapid','⏱ تحدي 60 ثانية']].map(([k,l])=><button key={k} className="btn" onClick={()=>setMode(k)}>{l}</button>)}<p style={{color:'var(--m)'}}>تُسحب الأسئلة من قاعدة التعريفات المحفوظة، وتُعطى أولوية للتعريفات التي نسيتها كثيراً.</p></div>;
+  if(mode==='rapid')return <div><button className="btn g" onClick={()=>setMode(null)}>↩ القائمة</button><Rapid S={S}/></div>;
+  if(!d)return null;
+  const P={d,S,next:ok=>{next(ok)},again:()=>setN(n+1)};
+  return <div><button className="btn g" onClick={()=>setMode(null)}>↩ القائمة</button><div className="card"><span className="tag">{d.ch}</span><h3>{d.title}</h3>
+    {mode==='cloze'&&<Cloze key={n} {...P}/>}{mode==='order'&&<Order key={n} {...P}/>}{mode==='mcq'&&<Mcq key={n} {...P}/>}{mode==='write'&&<Write key={n} {...P}/>}{mode==='rec'&&<div><p>{d.def}</p><Recorder key={n} d={d}/><button className="btn g" onClick={()=>setN(n+1)}>تعريف تاني</button></div>}</div></div>;
+}
+const Done=({ok,d,again})=><div><p style={{color:ok?'var(--ok)':'var(--no)'}}>{ok?'✅ صحيح!':'❌ راجع الإجابة'}</p><p className="card">{d.def}</p><button className="btn" onClick={again}>التالي</button></div>;
+
+function Cloze({d,next,again}){
+  const ws=useMemo(()=>d.def.split(' '),[d]);
+  const miss=useMemo(()=>{const k=d.kw.map(norm);const idx=[];ws.forEach((w,i)=>{if(k.some(x=>x.split(' ').includes(norm(w))||norm(w)===x))idx.push(i)});const pool=idx.length?idx:[Math.floor(ws.length/2)];return shuf(pool).slice(0,Math.min(4,pool.length)).sort((a,b)=>a-b)},[d]);
+  const [v,setV]=useState({});const [r,setR]=useState(null);
+  return <div><p style={{lineHeight:2.4}}>{ws.map((w,i)=>miss.includes(i)?<input key={i} className="blank" value={v[i]||''} disabled={r!==null} onChange={e=>setV({...v,[i]:e.target.value})}/>:w+' ')}</p>
+    {r===null?<button className="btn" onClick={()=>{const ok=miss.every(i=>norm(v[i]||'')===norm(ws[i]));setR(ok);next(ok)}}>تحقق</button>:<Done ok={r} d={d} again={again}/>}</div>;
+}
+function Order({d,next,again}){
+  const ch=useMemo(()=>{const w=d.def.split(' ');const out=[];const sz=Math.max(2,Math.ceil(w.length/5));for(let i=0;i<w.length;i+=sz)out.push(w.slice(i,i+sz).join(' '));return out},[d]);
+  const [pool,setPool]=useState(()=>shuf(ch.map((t,i)=>({t,i}))));const [ans,setAns]=useState([]);const [r,setR]=useState(null);
+  return <div><p style={{color:'var(--m)'}}>اضغط على المقاطع بالترتيب الصحيح.</p>
+    <div className="card" style={{minHeight:50}}>{ans.map(a=><span key={a.i} className="chip s" onClick={()=>{if(r===null){setAns(ans.filter(x=>x!==a));setPool([...pool,a])}}}>{a.t}</span>)}</div>
+    <div>{pool.map(a=><span key={a.i} className="chip" onClick={()=>{if(r===null){setPool(pool.filter(x=>x!==a));setAns([...ans,a])}}}>{a.t}</span>)}</div>
+    {r===null?<button className="btn" disabled={pool.length>0} onClick={()=>{const ok=ans.every((a,i)=>a.i===i);setR(ok);next(ok)}}>تحقق</button>:<Done ok={r} d={d} again={again}/>}</div>;
+}
+function Mcq({d,S,next,again}){
+  const o=useMemo(()=>shuf([d,...shuf(S.defs.filter(x=>x.id!==d.id)).sort((a,b)=>(b.ch===d.ch)-(a.ch===d.ch)).slice(0,3)]),[d]);
+  const [s,setS]=useState(null);
+  return <div><p>ما التعريف الصحيح لـ «{d.title}»؟</p>{o.map(x=><button key={x.id} className={'opt'+(s?(x.id===d.id?' ok':x.id===s?' no':''):'')} onClick={()=>{if(!s){setS(x.id);next(x.id===d.id)}}}>{x.def}</button>)}
+    {s&&<div><p style={{color:s===d.id?'var(--ok)':'var(--no)'}}>{s===d.id?'✅ صحيح':'❌ التعريف الصحيح هو المظلل بالأخضر.'}</p><button className="btn" onClick={again}>التالي</button></div>}</div>;
+}
+function Write({d,next,again}){
+  const [t,setT]=useState('');const [r,setR]=useState(null);
+  const check=()=>{const nt=norm(t);const hit=d.kw.filter(k=>nt.includes(norm(k)));const dw=[...new Set(norm(d.def).split(' ').filter(w=>w.length>2))];const tw=new Set(nt.split(' '));const ov=dw.filter(w=>tw.has(w)).length/dw.length;setR({hit,miss:d.kw.filter(k=>!hit.includes(k)),ov:Math.round(ov*100)})};
+  return <div><textarea rows="4" value={t} disabled={!!r} onChange={e=>setT(e.target.value)} placeholder="اكتب التعريف كاملاً من ذاكرتك"/>
+    {!r?<button className="btn" disabled={!t.trim()} onClick={check}>قيّم إجابتي</button>:<div>
+      <p>تطابق الكلمات: <b>{r.ov}%</b></p><p style={{color:'var(--ok)'}}>كلمات مفتاحية صحيحة: {r.hit.join('، ')||'—'}</p><p style={{color:'var(--no)'}}>ناقصة: {r.miss.join('، ')||'—'}</p>
+      <p className="card">{d.def}</p><p>التقييم الآلي تقريبي، قيّم نفسك:</p>
+      <button className="btn ok" onClick={()=>{next(true);again()}}>كانت إجابتي صحيحة</button><button className="btn no" onClick={()=>{next(false);again()}}>لم تكن صحيحة</button></div>}</div>;
+}
+
+function Library({S,up}){
+  const [q,setQ]=useState('');const [ch,setCh]=useState('');const [ed,setEd]=useState(null);
+  const chs=[...new Set(S.defs.map(d=>d.ch))];
+  const L=S.defs.filter(d=>(!ch||d.ch===ch)&&(d.title+d.def+d.kw.join(' ')).includes(q));
+  const save=()=>{if(!ed.title.trim()||!ed.def.trim()||!ed.ch.trim())return alert('املأ العنوان والفصل والتعريف.');
+    const o={...ed,kw:typeof ed.kw==='string'?ed.kw.split(/[،,]/).map(x=>x.trim()).filter(Boolean):ed.kw,id:ed.id||'d'+Date.now()};
+    up({defs:ed.id?S.defs.map(d=>d.id===o.id?o:d):[...S.defs,o]});setEd(null)};
+  if(ed)return <div className="card"><h2>{ed.id?'تعديل':'إضافة'} تعريف</h2>
+    <input placeholder="العنوان" value={ed.title} onChange={e=>setEd({...ed,title:e.target.value})}/><input placeholder="الفصل / الموضوع" value={ed.ch} onChange={e=>setEd({...ed,ch:e.target.value})}/>
+    <textarea rows="4" placeholder="التعريف الأصلي" value={ed.def} onChange={e=>setEd({...ed,def:e.target.value})}/><input placeholder="كلمات مفتاحية (افصل بفاصلة)" value={Array.isArray(ed.kw)?ed.kw.join('، '):ed.kw} onChange={e=>setEd({...ed,kw:e.target.value})}/>
+    <input dir="ltr" placeholder="القانون (اختياري)" value={ed.fm||''} onChange={e=>setEd({...ed,fm:e.target.value})}/><button className="btn" onClick={save}>حفظ</button><button className="btn g" onClick={()=>setEd(null)}>إلغاء</button></div>;
+  return <div><input placeholder="🔍 ابحث في التعريفات" value={q} onChange={e=>setQ(e.target.value)}/>
+    <div><span className={'chip'+(!ch?' s':'')} onClick={()=>setCh('')}>الكل</span>{chs.map(c=><span key={c} className={'chip'+(ch===c?' s':'')} onClick={()=>setCh(c)}>{c}</span>)}</div>
+    <button className="btn" onClick={()=>setEd({title:'',ch:ch||'',def:'',kw:'',lvl:1,rel:[]})}>➕ تعريف جديد</button>
+    {L.map(d=><div key={d.id} className="card"><span className="tag">{d.ch}</span> <span className="tag">{st(S.sr[d.id])}</span><h3>{d.title}</h3><p>{d.def}</p>{d.fm&&<div className="fm">{d.fm}</div>}
+      {d.rel?.length>0&&<small>مرتبط: {d.rel.map(r=>S.defs.find(x=>x.id===r)?.title).filter(Boolean).join('، ')}</small>}<br/>
+      <button className="btn g" onClick={()=>setEd(d)}>تعديل</button><Recorder d={d}/></div>)}
+    {!L.length&&<p>لا نتائج. جرّب كلمة أخرى.</p>}</div>;
+}
+
+function Dash({S,go}){
+  const c=S.defs.map(d=>st(S.sr[d.id]));const m=c.filter(x=>x==='متقن').length;const lr=c.filter(x=>x!=='جديد'&&x!=='متقن').length;
+  const due=S.defs.filter(d=>(S.sr[d.id]?.due||0)<=Date.now()).length;
+  const today=(S.log.find(l=>l.d===day())||{n:0}).n;
+  let streak=0;const ds=new Set(S.days);for(let i=0;i<400;i++){const k=new Date(Date.now()-i*864e5).toISOString().slice(0,10);if(ds.has(k))streak++;else if(i>0)break;else continue}
+  const weak=Object.entries(S.sr).filter(([,v])=>v.lapses>0).sort((a,b)=>b[1].lapses-a[1].lapses).slice(0,3).map(([id])=>S.defs.find(d=>d.id===id)?.title).filter(Boolean);
+  const pct=S.defs.length?Math.round(m/S.defs.length*100):0;
+  return <div><div className="hero"><h2>منصة حفظ الفيزياء</h2><p>احفظ التعريفات واسترجعها بنظام التكرار المتباعد، ثم اختبر نفسك بتمارين متنوعة.</p><button className="btn or" onClick={()=>go('study')}>🚀 ابدأ المراجعة</button></div>
+    <div className="grid"><div className="stat"><b>{S.defs.length}</b>إجمالي التعريفات</div><div className="stat"><b>{m}</b>متقنة</div><div className="stat"><b>{lr}</b>قيد التعلم</div><div className="stat"><b>{streak}</b>أيام متتالية</div><div className="stat"><b>{Math.round(S.secs/60)}</b>دقيقة دراسة</div><div className="stat"><b>{due}</b>مستحقة للمراجعة</div></div>
+    <div className="card" style={{marginTop:12}}><h2>🎯 تحديات اليوم</h2>{MIS.map(([k,l,n])=>{const m=S.mis&&S.mis.d===day()?S.mis:{};const v=Math.min(m[k]||0,n);return <div key={k}><span>{v>=n?'✅':'⬜'} {l} ({v}/{n}) {v>=n?'— +30 XP':''}</span><div className="bar"><i style={{width:v/n*100+'%'}}/></div></div>})}</div>
+    <div className="card" style={{marginTop:12}}><h3>هدف اليوم: {Math.min(today,S.perDay)} / {S.perDay} مراجعة</h3><div className="bar"><i style={{width:Math.min(100,today/S.perDay*100)+'%'}}/></div><h3>الإتقان العام: {pct}%</h3><div className="bar"><i style={{width:pct+'%'}}/></div>
+    <p>أضعف التعريفات: {weak.join('، ')||'لا توجد بيانات بعد — ابدأ المراجعة.'}</p></div></div>;
+}
+
+function Settings({S,up,U,setU,close}){
+  const [txt,setTxt]=useState('');
+  const exp=()=>{const b=new Blob([JSON.stringify(S)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='physics-backup.json';a.click()};
+  const imp=()=>{try{const j=JSON.parse(txt);if(!Array.isArray(j.defs)&&!Array.isArray(j))throw 0;up(Array.isArray(j)?{defs:j}:j);alert('تم الاستيراد');setTxt('')}catch(e){alert('ملف JSON غير صالح. تأكد من نسخه كاملاً.')}};
+  const P=(on,f,l,k)=><button key={k||l} className={'pill'+(on?' on':'')} onClick={f}>{l}</button>;
+  const set=o=>setU({...U,...o});
+  return <div className="ov" onClick={close}><div className="sheet" onClick={e=>e.stopPropagation()}>
+    <h2>⚙️ الإعدادات</h2>
+    <h3>🔠 حجم الخط: <b>{U.fs}px</b></h3><input type="range" min="12" max="20" value={U.fs} onChange={e=>set({fs:+e.target.value})}/>
+    <h3>🅰️ نوع الخط</h3>{[['dev','خط الجهاز'],['cairo','Cairo'],['taj','Tajawal'],['nas','نسخ']].map(([k,l])=>P(U.font===k,()=>set({font:k}),l))}
+    <h3>🎨 لون الموقع</h3>{Object.entries(COLS).map(([k,c])=>P(U.col===k,()=>set({col:k}),<span>{c[0]}<span className="dot" style={{background:c[1]}}/></span>,k))}
+    <h3>🌗 السمة</h3>{P(U.th==='light',()=>set({th:'light'}),'☀️ فاتح')}{P(U.th==='dark',()=>set({th:'dark'}),'🌙 داكن')}
+    <h3>📐 حجم الواجهة</h3>{P(U.den==='n',()=>set({den:'n'}),'عادي')}{P(U.den==='c',()=>set({den:'c'}),'مضغوط')}
+    <h3>✨ الحركة والتأثيرات</h3>{P(U.mo,()=>set({mo:true}),'✅ تشغيل')}{P(!U.mo,()=>set({mo:false}),'⛔ إيقاف')}
+    <h3>🔊 الأصوات</h3>{P(U.snd,()=>set({snd:true}),'✅ تشغيل')}{P(!U.snd,()=>set({snd:false}),'⛔ إيقاف')}
+    <h3>🎯 هدف المراجعات اليومي: {S.perDay}</h3><input type="range" min="5" max="50" step="5" value={S.perDay} onChange={e=>up({perDay:+e.target.value})}/>
+    <h3>🗣️ القراءة الصوتية</h3>{P(S.tts,()=>up({tts:true}),'✅ تشغيل')}{P(!S.tts,()=>up({tts:false}),'⛔ إيقاف')}
+    <h3>💾 نسخ احتياطي</h3><button className="btn g" onClick={exp}>⬇ تصدير JSON</button>
+    <textarea rows="2" placeholder="الصق محتوى ملف JSON هنا" value={txt} onChange={e=>setTxt(e.target.value)}/><button className="btn g" disabled={!txt.trim()} onClick={imp}>استيراد</button>
+    <div className="sticky"><button className="btn or" onClick={close}>تم ✔</button><button className="btn g" onClick={()=>setU(UI0)}>↺ الافتراضي</button></div></div></div>;
+}
+
+function App(){
+  const [S,setS]=useState(load);const [tab,setTab]=useState('dash');const [toast,setT]=useState('');const [sh,setSh]=useState(false);const [cap,setCap]=useState('');
+  const up=p=>setS(s=>({...s,...p}));
+  const U={...UI0,...S.ui};const setU=u=>up({ui:u});
+  window.TTS=S.tts;
+  useEffect(()=>{let to;const h=e=>{setCap(e.detail);clearTimeout(to);to=setTimeout(()=>setCap(''),3000+e.detail.length*70)};window.addEventListener('cap',h);return()=>window.removeEventListener('cap',h)},[]);
+  const bump=k=>{const m0=S.mis&&S.mis.d===day()?S.mis:{d:day(),rev:0,ok:0,rec:0,cl:[]};const m={...m0,[k]:(m0[k]||0)+1,cl:[...(m0.cl||[])]};let b=0,nm='';
+    MIS.forEach(([id,l,n])=>{if(m[id]>=n&&!m.cl.includes(id)){m.cl.push(id);b+=30;nm=l}});
+    setS(s=>({...s,mis:m,xp:s.xp+b}));if(b)setTimeout(()=>say('عاش يا بطل! خلّصت تحدي: '+nm+'. خدت تلاتين نقطة'),700)};
+  useEffect(()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}},[S]);
+  useEffect(()=>{const r=document.documentElement,c=COLS[U.col]||COLS.rose;r.style.fontSize=U.fs+'px';r.style.setProperty('--p',c[1]);r.style.setProperty('--h1',c[2]);r.style.setProperty('--h2',c[3]);r.style.setProperty('--a',U.th==='dark'?c[3]:c[1]);r.style.setProperty('--ff',FONTS[U.font]);r.dataset.th=U.th;r.dataset.den=U.den;r.dataset.mo=U.mo?'1':'0'},[S.ui]);
+  useEffect(()=>{const i=setInterval(()=>{if(!document.hidden&&(tab==='study'||tab==='prac'))setS(s=>({...s,secs:s.secs+10}))},1e4);return()=>clearInterval(i)},[tab]);
+  const xp=(n,ok)=>{if(U.snd)beep(ok);setS(s=>{const t=day();const log=[...s.log];const i=log.findIndex(l=>l.d===t);i>=0?log[i]={d:t,n:log[i].n+1}:log.push({d:t,n:1});return {...s,xp:s.xp+n,log,days:s.days.includes(t)?s.days:[...s.days,t]}});if(n){setT('+'+n+' XP');setTimeout(()=>setT(''),900)}};
+  const reset=()=>{if(confirm('سيتم حذف التقدم والتعريفات المضافة. متأكد؟')){try{localStorage.removeItem(KEY)}catch(e){}setS(DEF)}};
+  const m=S.defs.filter(d=>st(S.sr[d.id])==='متقن').length;const pct=S.defs.length?Math.round(m/S.defs.length*100):0;
+  const revs=S.log.reduce((a,l)=>a+l.n,0);
+  const T=[['dash','🏠','الرئيسية'],['study','🧠','المراجعة'],['prac','🎯','التمارين'],['lib','📚','التعريفات']];
+  const V={dash:<Dash S={S} go={setTab}/>,study:<Study S={S} up={up} xp={xp}/>,prac:<Practice S={S} up={up} xp={xp}/>,lib:<Library S={S} up={up}/>}[tab];
+  return <Cx.Provider value={{S,up,xp,bump}}><header><div className="top"><h1>🔬 منصة حفظ الفيزياء</h1><span className="xpb">{S.xp} ⭐</span></div><small>حفظ التعريفات • فيزياء — MOAZ OSMAN</small><br/>
+    <button className="hb" onClick={()=>setU({...U,th:U.th==='dark'?'light':'dark'})}>{U.th==='dark'?'☀️ فاتح':'🌙 ليلي'}</button><button className="hb" onClick={()=>setSh(true)}>⚙️ إعدادات</button><button className="hb" onClick={reset}>🔄 إعادة التقدم</button>
+    <div className="hbar"><i style={{width:pct+'%'}}/></div><small>التقدم: {pct}% • مراجعات: {revs} • المستوى {Math.floor(S.xp/100)+1}</small></header>
+    <div className="tabs">{T.map(([k,i,l])=><button key={k} className={tab===k?'on':''} onClick={()=>setTab(k)}>{i} {l}</button>)}</div>
+    <main>{V}</main>{toast&&<div style={{position:'fixed',top:12,left:12,background:'var(--ok)',color:'#fff',padding:'4px 14px',borderRadius:20,fontWeight:700,zIndex:30}}>{toast}</div>}
+    {sh&&<Settings S={S} up={up} U={U} setU={setU} close={()=>setSh(false)}/>}
+    {cap&&<div onClick={()=>setCap('')} style={{position:'fixed',bottom:12,left:12,right:12,background:'#0b1b30',color:'#fff',padding:'10px 14px',borderRadius:16,zIndex:40,boxShadow:'0 6px 20px rgba(0,0,0,.35)'}}>🗣️ {cap}</div>}</Cx.Provider>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script></body></html>
